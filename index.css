@@ -1,0 +1,177 @@
+html,body {
+    margin: 0 ;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    background-image: url('./images/tetris_bg.png');
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#tetris {
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+
+.tetris-wrapper{
+    width: 300px;
+    height: 540px;
+    background-color:rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+
+
+
+.wrapper-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    /* background-color: aqua; */
+    border: .3px solid #f5f5f5;
+}
+
+.wrapper-disabled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: .3px solid black;
+    transition: all 0.25s;
+}
+
+.tetris-count {
+    margin-bottom: 20px;
+}
+
+.tetris-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+} 
+
+.tetris-action {
+    margin-top:20px ;
+}
+
+/* 操作按钮 */
+.tetris-button {
+    margin: 0 10px;
+    width: 75px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.tetris-button:hover {
+    background-color: #eee;
+}
+
+
+
+.none {
+    display: none;
+}
+
+
+/* 手机端样式 */
+
+#tetris.phone{
+    width: 100vw;
+    height: auto;
+}
+
+.tetris-phone {
+
+    width: 320px;
+    height: 120px;
+    position: relative;
+    margin-top:10px ;
+}
+
+.tetris-phone-button {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    border: .5px solid #ccc;
+
+}
+
+
+button:focus {
+    background-color: transparent;
+}
+
+.tetris-wrapper.phone {
+    width: 340px;
+    height: 460px;
+}
+.tetris-phone-top{
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tetris-phone-left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.tetris-phone-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tetris-phone-right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.tetris-count.phone {
+    margin: 5px auto;
+}
+
+
+.tetris-action.phone{
+    margin-top: 10px;
+    height: 35px;
+}
+
+.tetris-action.phone>div {
+    height: 35px;
+    line-height: 35px;
+}
+
