@@ -14,28 +14,42 @@
       <div class="tetris-wrapper"></div>
       <!-- 操作 -->
       <div class="tetris-action">
-        <div class="tetris-button action-reset" onclick="reset()">
-          重新开始
-        </div>
-        <div class="tetris-button action-start" onclick="start()">
-          开始
-        </div>
+        <div class="tetris-button action-reset" onclick="reset()">重新开始</div>
+        <div class="tetris-button action-start" onclick="start()">开始</div>
         <div class="tetris-button actions-stop" onclick="stopAndContinue()">
           暂停
         </div>
       </div>
       <div class="tetris-phone none">
-        <div class="tetris-phone-top tetris-phone-button" onclick="rotateModel()">上</div>
-        <div class="tetris-phone-left tetris-phone-button"onclick="leftDown()">左</div>
-        <div class="tetris-phone-bottom tetris-phone-button"onclick="bottomDown()">下</div>
-        <div class="tetris-phone-right tetris-phone-button"onclick="rightDown()">右</div>
+        <div
+          class="tetris-phone-top tetris-phone-button"
+          onclick="rotateModel()"
+        >
+          上
+        </div>
+        <div class="tetris-phone-left tetris-phone-button" onclick="leftDown()">
+          左
+        </div>
+        <div
+          class="tetris-phone-bottom tetris-phone-button"
+          onclick="bottomDown()"
+        >
+          下
+        </div>
+        <div
+          class="tetris-phone-right tetris-phone-button"
+          onclick="rightDown()"
+        >
+          右
+        </div>
       </div>
     </div>
+
     <script src="./index.js"></script>
     <script>
       window.onload = function () {
-        if(isMobile()){
-          isMobileData()
+        if (isMobile()) {
+          isMobileData();
         }
       };
     </script>

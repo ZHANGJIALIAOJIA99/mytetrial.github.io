@@ -11,7 +11,7 @@
 
 // 常量
 // 每次移动的距离
-const STEP = 20;
+let STEP = 30;
 
 /** 按键位置 */
 const KEY_CODE = {
@@ -176,6 +176,9 @@ const createModel = () => {
   for (const key in currentModel) {
     const divEle = document.createElement("div");
     divEle.className = "wrapper-active";
+    if (isMobile()) {
+      divEle.classList.add("phone");
+    }
     document.querySelector(".tetris-wrapper").appendChild(divEle);
     divEle.style.backgroundColor = COLOR_LIST[randomNum];
   }
@@ -341,6 +344,9 @@ const fixedBottomModel = () => {
   const eles = document.querySelectorAll(".wrapper-active");
   eles.forEach((ele, index) => {
     ele.className = "wrapper-disabled";
+    if (isMobile()) {
+      ele.classList.add("phone");
+    }
     const block = currentModel[index];
     fixedBottomBlock[panelGridY + block.row + "_" + (panelGridX + block.col)] =
       ele;
@@ -460,7 +466,7 @@ const gameOver = () => {
     clearInterval(downInterval);
   }
   // 弹出对话框
-  alert("游戏结束，再接再励");
+  alert(`游戏结束，您的得分： ${score} 分,请再接再厉！`);
 };
 
 /** 重置初始数据 */
@@ -520,6 +526,7 @@ const isMobile = () => {
 const isMobileData = () => {
   (ROW_COUNT = 23), (COL_COUNT = 17);
   downSpeed = 1000;
+  STEP = 20;
   const phoneEle = document.querySelector(".tetris-phone");
 
   phoneEle.classList.remove("none");
