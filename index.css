@@ -87,6 +87,7 @@ html,body {
     cursor: pointer;
     background-color: #ccc;
     text-align: center;
+    user-select: none;
 }
 
 .tetris-button:hover {
@@ -113,6 +114,7 @@ html,body {
     height: 120px;
     position: relative;
     margin-top:10px ;
+    user-select: none;
 }
 
 .tetris-phone-button {
