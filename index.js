@@ -520,22 +520,22 @@ const isMobile = () => {
 const isMobileData = () => {
   (ROW_COUNT = 23), (COL_COUNT = 17);
   downSpeed = 1000;
-  const phoneEle = document.querySelector('.tetris-phone');
+  const phoneEle = document.querySelector(".tetris-phone");
 
-  phoneEle.classList.remove('none');
+  phoneEle.classList.remove("none");
   addClassPhone();
-
 };
 
-const addClassPhone = ()=>{
-  const tetrisEle = document.querySelector('#tetris ');
-  const wrapperEle = document.querySelector('.tetris-wrapper');
-  const countEle = document.querySelector('.tetris-count');
-  const actionEle = document.querySelector('.tetris-action');
-  [tetrisEle,wrapperEle,countEle,actionEle].forEach((ele)=>{
-    ele.classList.add('phone')
-  })
-}
+const addClassPhone = () => {
+  const bodyEle = document.querySelector("body");
+  const tetrisEle = document.querySelector("#tetris ");
+  const wrapperEle = document.querySelector(".tetris-wrapper");
+  const countEle = document.querySelector(".tetris-count");
+  const actionEle = document.querySelector(".tetris-action");
+  [tetrisEle, wrapperEle, countEle, actionEle, bodyEle].forEach((ele) => {
+    ele.classList.add("phone");
+  });
+};
 
 /** 初始化 */
 const init = () => {

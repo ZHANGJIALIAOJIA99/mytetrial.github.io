@@ -4,12 +4,15 @@ html,body {
     width: 100%;
     height: 100%;
     background-color: aliceblue;
-    background-image: url('./tetris_bg.png');
     background-size: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     
+}
+
+body {
+    background-image: url('./images/tetris_bg.png');
 }
 
 * {
@@ -103,13 +106,16 @@ html,body {
 
 /* 手机端样式 */
 
+body.phone {
+    background-image: url('./images/tetris_bg_phone.png');
+}
+
 #tetris.phone{
     width: 100vw;
     height: auto;
 }
 
 .tetris-phone {
-
     width: 320px;
     height: 120px;
     position: relative;
