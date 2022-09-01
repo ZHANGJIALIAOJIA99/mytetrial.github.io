@@ -13,6 +13,9 @@
 // 每次移动的距离
 let STEP = 30;
 
+/** 是否结束 */
+let isGameOverFlag = true;
+
 /** 按键位置 */
 const KEY_CODE = {
   LEFT: 37,
@@ -247,6 +250,7 @@ const bottomDown = (event) => {
 // 下 （0，1）
 
 const keyDownMove = (x, y) => {
+  if (isGameOverFlag) return;
   // const getActiveEle = document.querySelector('.wrapper-active');
   // console.log('getActiveEle',getActiveEle.style.top)
   // const savePreLeft = parseInt(getActiveEle.style.left || 0);
@@ -461,6 +465,7 @@ const isGameOver = () => {
 
 /** 结束掉游戏 */
 const gameOver = () => {
+  isGameOverFlag = true;
   // 结束定时器
   if (downInterval) {
     clearInterval(downInterval);
@@ -481,6 +486,7 @@ const resetInitData = () => {
 
 /** 重新开始 */
 const reset = () => {
+  isGameOverFlag = false;
   if (downInterval) {
     clearInterval(downInterval);
   }
@@ -507,8 +513,7 @@ const stopAndContinue = () => {
 
 /** 开始 */
 const start = () => {
-  const wrapperEle = document.querySelector(".tetris-wrapper");
-  if (wrapperEle.childNodes.length <= 0) {
+  if (isGameOverFlag) {
     reset();
   }
 };
