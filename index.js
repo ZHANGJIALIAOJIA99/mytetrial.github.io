@@ -274,15 +274,15 @@ const keyDownMove = (x, y) => {
 const setDownSpeed = () => {
   switch (score) {
     case score === 50: {
-      downSpeed = 600;
+      downSpeed = 400;
       break;
     }
     case score === 100: {
-      downSpeed = 500;
+      downSpeed = 300;
       break;
     }
     case score === 200: {
-      downSpeed = 300;
+      downSpeed = 200;
       break;
     }
     default: {
@@ -530,7 +530,7 @@ const isMobile = () => {
 /** 移动端 数据修改 */
 const isMobileData = () => {
   (ROW_COUNT = 23), (COL_COUNT = 17);
-  downSpeed = 1000;
+  downSpeed = 500;
   STEP = 20;
   const phoneEle = document.querySelector(".tetris-phone");
 
