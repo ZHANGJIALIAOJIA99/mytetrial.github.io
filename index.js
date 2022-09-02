@@ -183,7 +183,7 @@ const createModel = () => {
       divEle.classList.add("phone");
     }
     document.querySelector(".tetris-wrapper").appendChild(divEle);
-    divEle.style.backgroundColor = COLOR_LIST[randomNum];
+    // divEle.style.backgroundColor = COLOR_LIST[randomNum];
   }
   locationBlocks();
 

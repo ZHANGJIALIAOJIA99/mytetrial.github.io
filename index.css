@@ -48,8 +48,10 @@ body {
     left: 0;
     width: 30px;
     height: 30px;
-    /* background-color: aqua; */
     border: .3px solid #f5f5f5;
+    background-image: url('./images/wrapped-activity.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .wrapper-disabled {
@@ -60,10 +62,14 @@ body {
     height: 30px;
     border: .3px solid black;
     transition: all 0.25s;
+    background-image: url('./images/wrapped-disabled.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .tetris-count {
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .tetris-action {
@@ -107,7 +113,7 @@ body {
 /* 手机端样式 */
 
 body.phone {
-    background-image: url('./images/tetris_bg_phone.png');
+    background-image: url('./images/tetris_bg_phone.jpg');
 }
 
 #tetris.phone{
