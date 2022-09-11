@@ -313,7 +313,7 @@ const rotateModel = () => {
   locationBlocks();
 };
 
-// 检测是否越界
+/** 检测是否越界 */
 const checkBound = () => {
   const leftBound = 0,
     rightBound = COL_COUNT,
