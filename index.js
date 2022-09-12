@@ -558,7 +558,7 @@ const isMobile = () => {
 /** 移动端 数据修改 */
 const isMobileData = () => {
   /** 设定移动端 固定行数跟列数 10 列 15 行*/
-  (ROW_COUNT = 17), (COL_COUNT = 10);
+  (ROW_COUNT = 20), (COL_COUNT = 10);
 
   // 获取当前窗口宽度 求得每个块的 大小 向下取整
   // 200 是操作按钮固定尺寸
