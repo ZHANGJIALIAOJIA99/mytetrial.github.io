@@ -151,6 +151,11 @@ let downInterval = null;
 // 下落速度
 let downSpeed = 800;
 
+/** 判断双击事件以及运动到底部 */
+let count = 0;
+let timer = null;
+let autoTimer = null;
+
 // 记录固定底部的块元素
 // key = 行_列 ：V=  块元素
 let fixedBottomBlock = {};
@@ -181,9 +186,10 @@ const createModel = () => {
     divEle.className = "wrapper-active";
     if (isMobile()) {
       divEle.classList.add("phone");
+      divEle.style.width = STEP + "px";
+      divEle.style.height = STEP + "px";
     }
     document.querySelector(".tetris-wrapper").appendChild(divEle);
-    // divEle.style.backgroundColor = COLOR_LIST[randomNum];
   }
   locationBlocks();
 
@@ -240,6 +246,26 @@ const topDown = (event) => {
   keyDownMove(0, -1);
 };
 const bottomDown = (event) => {
+  // 如果在执行双击事件时，不再执行
+  if (autoTimer) return;
+
+  if (!timer) {
+    timer = setTimeout(() => {
+      count = 0;
+      timer = null;
+    }, 200);
+  }
+  count++;
+  if (count === 2) {
+    // 直接到能下落的最大位置
+    autoTimer = setInterval(() => {
+      keyDownMove(0, 1);
+    }, 0);
+    count = 0;
+    clearTimeout(timer);
+    timer = null;
+    return;
+  }
   keyDownMove(0, 1);
 };
 
@@ -251,14 +277,7 @@ const bottomDown = (event) => {
 
 const keyDownMove = (x, y) => {
   if (isGameOverFlag) return;
-  // const getActiveEle = document.querySelector('.wrapper-active');
-  // console.log('getActiveEle',getActiveEle.style.top)
-  // const savePreLeft = parseInt(getActiveEle.style.left || 0);
-  // const svvePreTop = parseInt(getActiveEle.style.top || 0);
-
-  // // 移动计算
-  // getActiveEle.style.top = svvePreTop + (y * STEP) + 'px';
-  // getActiveEle.style.left =savePreLeft + (x * STEP) + 'px';
+  // 判断是否到底部
   if (isMeet(panelGridX + x, panelGridY + y, currentModel)) {
     if (y !== 0) {
       fixedBottomModel();
@@ -266,11 +285,13 @@ const keyDownMove = (x, y) => {
     return;
   }
 
+  // 移动计算
   panelGridX += x;
   panelGridY += y;
   locationBlocks();
 };
 
+/** 根据分数来定制速度 */
 const setDownSpeed = () => {
   switch (score) {
     case score === 50: {
@@ -291,10 +312,11 @@ const setDownSpeed = () => {
   }
 };
 
+/** 模型旋转原理 */
 const rotateModel = () => {
   // 旋转原理
   // 移动后的行 === 移动前的列
-  // 移动后的列 === 3- 移动前的行
+  // 移动后的列 === 3 - 移动前的行
 
   // 克隆 当前数据源
   const cloneCurrentModel = JSON.parse(JSON.stringify(currentModel));
@@ -341,7 +363,7 @@ const checkBound = () => {
   }
 };
 
-// 将模型固定在底部
+/** 将模型固定在底部 */
 const fixedBottomModel = () => {
   // 1. 将元素样式修改
   // 2. 让模型不可以移动
@@ -355,6 +377,12 @@ const fixedBottomModel = () => {
     fixedBottomBlock[panelGridY + block.row + "_" + (panelGridX + block.col)] =
       ele;
   });
+
+  // 双击下落之后 清除定时器
+  if (autoTimer) {
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
 
   // 判断是否被铺满
   isRemoveLine();
@@ -529,9 +557,17 @@ const isMobile = () => {
 
 /** 移动端 数据修改 */
 const isMobileData = () => {
-  (ROW_COUNT = 23), (COL_COUNT = 17);
+  /** 设定移动端 固定行数跟列数 10 列 15 行*/
+  (ROW_COUNT = 17), (COL_COUNT = 10);
+
+  // 获取当前窗口宽度 求得每个块的 大小 向下取整
+  // 200 是操作按钮固定尺寸
+  const currentClientHeight = document.body.clientHeight - 200;
+  const stepWidth = Math.floor(currentClientHeight / ROW_COUNT);
+
   downSpeed = 500;
-  STEP = 20;
+  STEP = stepWidth;
+
   const phoneEle = document.querySelector(".tetris-phone");
 
   phoneEle.classList.remove("none");
@@ -547,6 +583,8 @@ const addClassPhone = () => {
   [tetrisEle, wrapperEle, countEle, actionEle, bodyEle].forEach((ele) => {
     ele.classList.add("phone");
   });
+  wrapperEle.style.width = STEP * COL_COUNT + "px";
+  wrapperEle.style.height = STEP * ROW_COUNT + "px";
 };
 
 /** 初始化 */

@@ -147,8 +147,8 @@ button:focus {
 }
 
 .tetris-wrapper.phone {
-    width: 340px;
-    height: 460px;
+    width: auto;
+    height: auto;
 }
 .tetris-phone-top{
     top: 0;
