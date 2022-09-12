@@ -253,7 +253,7 @@ const bottomDown = (event) => {
     timer = setTimeout(() => {
       count = 0;
       timer = null;
-    }, 200);
+    }, 500);
   }
   count++;
   if (count === 2) {
